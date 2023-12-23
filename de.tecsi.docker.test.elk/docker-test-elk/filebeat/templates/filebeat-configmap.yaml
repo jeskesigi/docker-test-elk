@@ -7,11 +7,12 @@ metadata:
 data:
   filebeat.yml: |
     filebeat.inputs:
-    - type: log
+    - type: container
       paths:
         - /var/log/containers/test-*.log
       json.keys_under_root: true
       json.add_error_key: true
+      json.ignore_decoding_error: true
 
     # Send events to Logstash.
     output.logstash:
