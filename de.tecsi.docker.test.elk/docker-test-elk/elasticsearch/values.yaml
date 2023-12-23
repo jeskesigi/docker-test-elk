@@ -1,3 +1,6 @@
+# image
+image: docker.elastic.co/elasticsearch/elasticsearch:8.11.3
+
 # ports
 rest_port: 9200
 inter_node_port: 9300
