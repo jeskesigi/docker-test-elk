@@ -9,7 +9,7 @@ data:
   logstash.conf: |
     input {
       beats {
-        port => 5044
+        port => {{ .Values.service_port }}
       }
     }
     output {
