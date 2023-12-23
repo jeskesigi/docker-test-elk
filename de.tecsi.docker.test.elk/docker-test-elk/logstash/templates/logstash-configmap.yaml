@@ -1,0 +1,23 @@
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: logstash-configmap
+data:
+  logstash.yml: |
+    path.config: /usr/share/logstash/pipeline
+
+  logstash.conf: |
+    input {
+      beats {
+        port => 5044
+      }
+    }
+    output {
+      elasticsearch {
+          hosts => [ {{ .Values.elasticsearch_url }} ]
+          index => "logstash-%{[kubernetes][namespace]}-%{+YYYY.MM.dd}"
+#          user => "elastic"
+#          password => "kuydWOlFxDdCLi1J"
+          cacert => '/etc/logstash/certificates/ca.crt'
+      }
+    }
