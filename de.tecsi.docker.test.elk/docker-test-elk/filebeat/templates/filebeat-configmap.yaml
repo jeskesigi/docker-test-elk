@@ -11,8 +11,6 @@ data:
       enabled: true
       paths:
         - /var/log/containers/*.log
-      # If you setup helm for your cluster and want to investigate its logs, comment out this section.
-      # exclude_files: ['tiller-deploy-*']
 
       # To be used by Logstash for distinguishing index names while writing to elasticsearch.
       fields_under_root: true
@@ -35,8 +33,8 @@ data:
       hosts: ["logstash:9600"]
 
     # You can set logging.level to debug to see the generated events by the running filebeat instance.
-    logging.level: info
-    logging.to_files: false
+    logging.level: debug
+    logging.to_files: true
     logging.files:
       path: /var/log/filebeat
       name: filebeat
