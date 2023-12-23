@@ -39,8 +39,8 @@ spec:
           subPath: filebeat.yml
         - name: data
           mountPath: /usr/share/filebeat/data
-        - name: varlibdockercontainers
-          mountPath: /var/lib/docker/containers
+        - name: containerlogs
+          mountPath: /var/log/containers
           readOnly: true
       volumes:
       # Bind previously defined ConfigMap
@@ -48,12 +48,9 @@ spec:
         configMap:
           defaultMode: 0600
           name: filebeat
-      - name: varlibdockercontainers
+      - name: containerlogs
         hostPath:
-          path: /var/lib/docker/containers
-      - name: varlog
-        hostPath:
-          path: /var/log
+          path: /var/log/containers
       # data folder stores a registry of read status for all files, so we don't send everything again on a Filebeat pod restart
       - name: data
         hostPath:
