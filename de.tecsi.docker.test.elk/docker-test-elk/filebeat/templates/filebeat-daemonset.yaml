@@ -13,7 +13,7 @@ spec:
       labels:
         k8s-app: filebeat
     spec:
-      serviceAccountName: filebeat-service-account
+      serviceAccountName: filebeat
       terminationGracePeriodSeconds: 30
       hostNetwork: true
       dnsPolicy: ClusterFirstWithHostNet
@@ -48,7 +48,7 @@ spec:
       - name: config
         configMap:
           defaultMode: 0600
-          name: filebeat-config
+          name: filebeat
       - name: varlibdockercontainers
         hostPath:
           path: /var/lib/docker/containers

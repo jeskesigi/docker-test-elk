@@ -1,7 +1,7 @@
 kind: ConfigMap
 apiVersion: v1
 metadata:
-  name: filebeat-config
+  name: filebeat
   labels:
     k8s-app: filebeat
 data:
@@ -13,19 +13,19 @@ data:
         - /var/log/containers/*.log
 
       # To be used by Logstash for distinguishing index names while writing to elasticsearch.
-      fields_under_root: true
-      fields:
-        index_prefix: k8s-logs
+      #fields_under_root: true
+      #fields:
+      #  index_prefix: k8s-logs
 
       # Enrich events with k8s, cloud metadata 
-      processors:
-        - add_cloud_metadata:
-        - add_host_metadata:
-        - add_kubernetes_metadata:
-            host: ${NODE_NAME}
-            matchers:
-            - logs_path:
-                logs_path: "/var/log/containers/"
+      # processors:
+      #  - add_cloud_metadata:
+      #  - add_host_metadata:
+      #  - add_kubernetes_metadata:
+      #      host: ${NODE_NAME}
+      #      matchers:
+      #      - logs_path:
+      #          logs_path: "/var/log/containers/"
 
     # Send events to Logstash.
     output.logstash:
