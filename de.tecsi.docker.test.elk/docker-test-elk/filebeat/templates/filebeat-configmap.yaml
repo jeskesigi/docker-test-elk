@@ -13,19 +13,19 @@ data:
         - /var/log/containers/*.log
 
       # To be used by Logstash for distinguishing index names while writing to elasticsearch.
-      #fields_under_root: true
-      #fields:
-      #  index_prefix: k8s-logs
+      fields_under_root: true
+      fields:
+        index_prefix: k8s-logs
 
       # Enrich events with k8s, cloud metadata 
-      # processors:
-      #  - add_cloud_metadata:
-      #  - add_host_metadata:
-      #  - add_kubernetes_metadata:
-      #      host: ${NODE_NAME}
-      #      matchers:
-      #      - logs_path:
-      #          logs_path: "/var/containers/pods/"
+      processors:
+        - add_cloud_metadata:
+        - add_host_metadata:
+        - add_kubernetes_metadata:
+            host: ${NODE_NAME}
+            matchers:
+            - logs_path:
+                logs_path: "/var/containers/pods/"
 
     # Send events to Logstash.
     output.logstash:
@@ -34,8 +34,8 @@ data:
       index: filebeat
 
     # You can set logging.level to debug to see the generated events by the running filebeat instance.
-    logging.level: debug
-    logging.to_files: true
+    logging.level: info
+    logging.to_files: false
     logging.files:
       path: /var/log/filebeat
       name: filebeat
