@@ -15,7 +15,7 @@ data:
     output {
       elasticsearch {
           hosts => [ "{{ .Values.elasticsearch_url }}" ]
-          index => "logstash-%{[kubernetes][namespace]}-%{+YYYY.MM.dd}"
+          index => "logstash"
           ssl => false
       }
     }
