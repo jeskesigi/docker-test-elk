@@ -5,7 +5,7 @@ metadata:
   labels:
     k8s-app: filebeat
 data:
-  filebeat.yml: |-
+  filebeat.yml: |
     filebeat.inputs:
     - type: container
       enabled: true
@@ -31,6 +31,7 @@ data:
     output.logstash:
       enabled: true
       hosts: ["logstash-service:5044"]
+      index: filebeat
 
     # You can set logging.level to debug to see the generated events by the running filebeat instance.
     logging.level: debug
