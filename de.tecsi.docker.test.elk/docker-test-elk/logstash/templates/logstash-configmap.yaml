@@ -16,6 +16,6 @@ data:
       elasticsearch {
           hosts => [ "{{ .Values.elasticsearch_url }}" ]
           index => "logstash-%{[kubernetes][namespace]}-%{+YYYY.MM.dd}"
-          cacert => "/etc/logstash/certificates/ca.crt"
+          ssl => false
       }
     }
