@@ -22,9 +22,6 @@ spec:
             mountPath: /usr/share/logstash/config
           - name: logstash-pipeline-volume
             mountPath: /usr/share/logstash/pipeline
-          - name: cert-ca
-            mountPath: "/etc/logstash/certificates"
-            readOnly: true
         env:
           - name: ELASTICSEARCH_URL
             value: {{ .Values.elasticsearch_url }}
@@ -45,6 +42,3 @@ spec:
           items:
             - key: logstash.conf
               path: logstash.conf
-      - name: cert-ca
-        secret:
-          secretName: elasticsearch-master-certs
