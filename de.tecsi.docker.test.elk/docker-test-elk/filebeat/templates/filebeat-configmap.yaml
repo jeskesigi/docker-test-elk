@@ -10,7 +10,7 @@ data:
     - type: container
       enabled: true
       paths:
-        - /var/log/pods/*.log
+        - /var/log/containers/*.log
 
       # To be used by Logstash for distinguishing index names while writing to elasticsearch.
       #fields_under_root: true
@@ -25,7 +25,7 @@ data:
       #      host: ${NODE_NAME}
       #      matchers:
       #      - logs_path:
-      #          logs_path: "/var/log/pods/"
+      #          logs_path: "/var/containers/pods/"
 
     # Send events to Logstash.
     output.logstash:
