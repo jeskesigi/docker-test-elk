@@ -30,7 +30,7 @@ data:
     # Send events to Logstash.
     output.logstash:
       enabled: true
-      hosts: ["logstash-service:5044"]
+      hosts: ["logstash:5044"]
       index: filebeat
 
     # You can set logging.level to debug to see the generated events by the running filebeat instance.
