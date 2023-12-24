@@ -1,0 +1,13 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: vector
+spec:
+  type: ClusterIP
+  selector:
+    name: vector
+  ports:
+    - name: prom-exporter
+      port: 9090
+      protocol: TCP
+      targetPort: 9090

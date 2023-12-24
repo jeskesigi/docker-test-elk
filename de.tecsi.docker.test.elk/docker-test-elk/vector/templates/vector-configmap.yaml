@@ -1,0 +1,43 @@
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  annotations:
+  name: vector
+data:
+  agent.yaml: |
+    data_dir: /vector-data-dir
+    api:
+      enabled: true
+      address: {{ .Values.api_address }}
+      playground: false
+    sources:
+      docker_test_logs:
+        type: file
+        include: ["/var/log/containers/test-*.log"]
+      #kubernetes_logs:
+      #  type: kubernetes_logs
+      #host_metrics:
+      #  filesystem:
+      #    devices:
+      #      excludes: [binfmt_misc]
+      #    filesystems:
+      #      excludes: [binfmt_misc]
+      #    mountPoints:
+      #      excludes: ["*/proc/sys/fs/binfmt_misc"]
+      #internal_metrics:
+      #  type: host_metrics
+      #  type: internal_metrics
+      
+    transforms:
+      docker_test_json_parser:
+        type: remap
+        inputs: [docker_test_logs]
+        source: |
+          .message = parse_json!( parse_json!(.message).log )
+
+    sinks:
+      es_exporter:
+        type: elasticsearch
+        inputs: [docker_test_logs]
+        index: docker-test
+        endpoints: [ "{{ .Values.elasticsearch_url }}" ]

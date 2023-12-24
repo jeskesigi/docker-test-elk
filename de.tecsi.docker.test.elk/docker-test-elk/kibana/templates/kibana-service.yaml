@@ -5,7 +5,7 @@ metadata:
   labels:
     app: kibana
 spec:
-  ports:
-  - port: {{ .Values.service_port }}
   selector:
     app: kibana
+  ports:
+  - port: {{ .Values.service_port }}

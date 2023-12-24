@@ -1,0 +1,5 @@
+#port
+api_address: 127.0.0.1:8686
+
+# connect to es
+elasticsearch_url: http://elasticsearch:9200
