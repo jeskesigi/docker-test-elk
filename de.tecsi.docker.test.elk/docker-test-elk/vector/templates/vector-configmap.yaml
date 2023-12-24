@@ -29,7 +29,7 @@ data:
       #  type: internal_metrics
       
     transforms:
-      docker_test_json_parser:
+      docker_test_parser:
         type: remap
         inputs: [docker_test_logs]
         source: |
@@ -38,6 +38,8 @@ data:
     sinks:
       es_exporter:
         type: elasticsearch
-        inputs: [docker_test_logs]
-        index: docker-test
+        inputs: [docker_test_parser]
         endpoints: [ "{{ .Values.elasticsearch_url }}" ]
+        mode: bulk
+        bulk:
+          index: docker-test
