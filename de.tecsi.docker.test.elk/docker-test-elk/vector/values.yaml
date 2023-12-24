@@ -1,4 +1,7 @@
-#port
+# image
+image: "timberio/vector:0.34.1-distroless-libc"
+
+# port
 api_address: 127.0.0.1:8686
 
 # connect to es
