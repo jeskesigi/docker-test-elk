@@ -47,10 +47,6 @@ spec:
             value: "es-cluster-0"
           - name: ES_JAVA_OPTS
             value: {{ .Values.java_opts }}
-      volumnes:
-      - name: config
-        configMap:
-          name: elasticsearch-config
       initContainers:
       - name: fix-permissions
         image: busybox
@@ -70,6 +66,10 @@ spec:
         command: ["sh", "-c", "ulimit -n 65536"]
         securityContext:
           privileged: true
+      volumes:
+      - name: config
+        configMap:
+          name: elasticsearch-config
   volumeClaimTemplates:
   - metadata:
       name: data
@@ -81,3 +81,4 @@ spec:
       resources:
         requests:
           storage: 10Gi
+     
