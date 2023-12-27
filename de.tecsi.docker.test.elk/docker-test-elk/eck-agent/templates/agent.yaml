@@ -12,7 +12,7 @@ data:
         type: elasticsearch
         hosts:
           - >-
-            http://localhost:9200
+            http://quickstart-es-http:9200
         username: elastic
         password: jXsIe2B17Tv3xO96x4yuW549
     agent:
