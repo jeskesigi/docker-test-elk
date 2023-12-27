@@ -1,6 +1,6 @@
 apiVersion: v2
 name: docker-test-elasticsearch
-description: helm chart for kubernetes to install eck operator
+description: helm chart for kubernetes to install eck crds
 
 type: application
 version: 0.1.0
