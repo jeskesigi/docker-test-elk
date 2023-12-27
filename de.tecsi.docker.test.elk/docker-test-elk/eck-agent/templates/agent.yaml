@@ -313,7 +313,7 @@ metadata:
 subjects:
   - kind: ServiceAccount
     name: elastic-agent-standalone
-    namespace: {{ .Release.Namespace } }
+    namespace: {{ .Release.Namespace }}
 roleRef:
   kind: ClusterRole
   name: elastic-agent-standalone
@@ -340,7 +340,7 @@ metadata:
 subjects:
   - kind: ServiceAccount
     name: elastic-agent-standalone
-    namespace: {{ .Release.Namespace } }
+    namespace: {{ .Release.Namespace }}
 roleRef:
   kind: Role
   name: elastic-agent-standalone
@@ -368,7 +368,7 @@ metadata:
 subjects:
   - kind: ServiceAccount
     name: elastic-agent-standalone
-    namespace: {{ .Release.Namespace } }
+    namespace: {{ .Release.Namespace }}
 roleRef:
   kind: Role
   name: elastic-agent-standalone-kubeadm-config
