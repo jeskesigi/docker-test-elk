@@ -48,7 +48,7 @@ spec:
           - name: ES_JAVA_OPTS
             value: {{ .Values.java_opts }}
       volumnes:
-      - name: config-volume
+      - name: config
         configMap:
           name: elasticsearch-config
       initContainers:
