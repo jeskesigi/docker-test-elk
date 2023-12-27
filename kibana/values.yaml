@@ -1,8 +1,0 @@
-# image
-image: docker.elastic.co/kibana/kibana:8.5.1
-
-# port
-service_port: 5601
-
-# connect to es
-elasticsearch_url: http://elasticsearch:9200
