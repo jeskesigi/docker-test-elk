@@ -8,4 +8,4 @@ inter_node_port: 9300
 # path
 mount_path: /usr/share/elasticsearch/data
 
-java_opts: "-Xms512m -Xmx512m"
+java_opts: "-Xms512m -Xmx512m -Dxpack.security.transport.ssl.enabled=false"
