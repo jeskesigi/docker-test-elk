@@ -34,10 +34,6 @@ spec:
         - name: config-volume
           mountPath: /usr/share/elasticsearch/config
           subPath: elasticsearch.yml
-        volumnes:
-        - name: config-volume
-          configMap:
-            name: elasticsearch-config
         env:
           - name: cluster.name
             value: k8s-logs
@@ -70,6 +66,10 @@ spec:
         command: ["sh", "-c", "ulimit -n 65536"]
         securityContext:
           privileged: true
+      volumnes:
+      - name: config-volume
+        configMap:
+          name: elasticsearch-config
   volumeClaimTemplates:
   - metadata:
       name: data
