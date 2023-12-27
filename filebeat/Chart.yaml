@@ -1,0 +1,7 @@
+apiVersion: v2
+name: docker-test-filebeat
+description: helm chart for kubernetes to install filebeat
+
+type: application
+version: 0.1.0
+appVersion: 7.10.2

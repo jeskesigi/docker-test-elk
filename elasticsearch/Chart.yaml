@@ -1,0 +1,7 @@
+apiVersion: v2
+name: docker-test-elasticsearch
+description: helm chart for kubernetes to install elasticsearch
+
+type: application
+version: 0.1.0
+appVersion: 8.5.1

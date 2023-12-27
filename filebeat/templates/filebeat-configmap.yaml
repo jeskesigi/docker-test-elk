@@ -1,0 +1,29 @@
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: filebeat
+  labels:
+    k8s-app: filebeat
+data:
+  filebeat.yml: |
+    filebeat.inputs:
+    - type: container
+      paths:
+        - /var/log/containers/test-*.log
+      json.keys_under_root: true
+      json.add_error_key: true
+      json.ignore_decoding_error: true
+
+    # Send events to Logstash.
+    output.logstash:
+      enabled: true
+      hosts: ["logstash:5044"]
+
+    # You can set logging.level to debug to see the generated events by the running filebeat instance.
+    logging.level: info
+    logging.to_files: false
+    logging.files:
+      path: /var/log/filebeat
+      name: filebeat
+      keepfiles: 7
+      permissions: 0644

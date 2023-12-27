@@ -1,0 +1,7 @@
+apiVersion: v2
+name: docker-test-logstash
+description: helm chart for kubernetes to install logstash
+
+type: application
+version: 0.1.0
+appVersion: 7.7.1
