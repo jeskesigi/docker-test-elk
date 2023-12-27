@@ -31,8 +31,8 @@ spec:
         volumeMounts:
         - name: data
           mountPath: {{ .Values.mount_path }}
-        - name: config-volume
-          mountPath: /usr/share/elasticsearch/config
+        - name: config
+          mountPath: /usr/share/elasticsearch/config/elasticsearch.yml
           subPath: elasticsearch.yml
         env:
           - name: cluster.name
@@ -47,6 +47,10 @@ spec:
             value: "es-cluster-0"
           - name: ES_JAVA_OPTS
             value: {{ .Values.java_opts }}
+      volumnes:
+      - name: config-volume
+        configMap:
+          name: elasticsearch-config
       initContainers:
       - name: fix-permissions
         image: busybox
@@ -66,10 +70,6 @@ spec:
         command: ["sh", "-c", "ulimit -n 65536"]
         securityContext:
           privileged: true
-      volumnes:
-      - name: config-volume
-        configMap:
-          name: elasticsearch-config
   volumeClaimTemplates:
   - metadata:
       name: data
