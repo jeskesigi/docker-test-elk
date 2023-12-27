@@ -31,6 +31,13 @@ spec:
         volumeMounts:
         - name: data
           mountPath: {{ .Values.mount_path }}
+        - name: config-volume
+          mountPath: /usr/share/elasticsearch/config
+          subPath: elasticsearch.yml
+        volumnes:
+        - name: config-volume
+          configMap:
+            name: elasticsearch-config
         env:
           - name: cluster.name
             value: k8s-logs

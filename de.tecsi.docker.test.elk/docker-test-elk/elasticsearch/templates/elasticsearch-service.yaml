@@ -5,9 +5,10 @@ metadata:
   labels:
     app: elasticsearch
 spec:
+  # type: LoadBalancer
+  clusterIP: None
   selector:
     app: elasticsearch
-  clusterIP: None
   ports:
     - name: rest
       port: {{ .Values.rest_port }}
