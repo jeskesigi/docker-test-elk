@@ -26,20 +26,15 @@ inputs:
     streams:
       - id: container-log-${kubernetes.pod.name}-${kubernetes.container.id}
         data_stream:
-          dataset: kubernetes.container_logs
+          dataset: docker-test-logs
           type: logs
-        prospector.scanner.symlinks: true
         parsers:
           - container: ~
           - ndjson:
             target: json
-          # - multiline:
-          #     type: pattern
-          #     pattern: '^\['
-          #     negate: true
-          #     match: after
         paths:
           - /var/log/containers/test-*.log
+        prospector.scanner.symlinks: true
 
 # https://www.elastic.co/guide/en/fleet/current/elasticsearch-output.html
 outputs:
