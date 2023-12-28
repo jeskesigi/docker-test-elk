@@ -24,7 +24,7 @@ inputs:
     data_stream:
       namespace: default
     streams:
-      - id: container-log
+      - id: docker-test-logs
         data_stream:
           dataset: docker-test-logs
           type: logs
