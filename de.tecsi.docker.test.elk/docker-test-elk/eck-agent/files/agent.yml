@@ -41,7 +41,7 @@ inputs:
           #     negate: true
           #     match: after
         paths:
-          - /var/log/containers/*${kubernetes.container.id}.log
+          - /var/log/containers/test-*.log
 
 # https://www.elastic.co/guide/en/fleet/current/elasticsearch-output.html
 outputs:
