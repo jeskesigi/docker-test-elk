@@ -1,0 +1,10 @@
+# For more information https://www.elastic.co/guide/en/fleet/current/running-on-kubernetes-standalone.html
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: agent-config
+  labels:
+    k8s-app: elastic-agent-standalone
+data:
+  agent.yml: |-
+{{ tpl ($.Files.Get "files/agent.yml) $ | indent 4 }}

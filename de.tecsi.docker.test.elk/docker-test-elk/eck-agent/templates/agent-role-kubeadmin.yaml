@@ -1,0 +1,11 @@
+kind: Role
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: elastic-agent-standalone-kubeadm-config
+  labels:
+    k8s-app: elastic-agent-standalone
+rules:
+  - apiGroups: [""]
+    resources: ["configmaps"]
+    resourceNames: ["kubeadm-config"]
+    verbs: ["get"]

@@ -1,0 +1,13 @@
+kind: RoleBinding
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: elastic-agent-standalone-kubeadm-config
+  namespace: kube-system
+subjects:
+  - kind: ServiceAccount
+    name: elastic-agent-standalone
+    namespace: {{ .Release.Namespace }}
+roleRef:
+  kind: Role
+  name: elastic-agent-standalone-kubeadm-config
+  apiGroup: rbac.authorization.k8s.io
