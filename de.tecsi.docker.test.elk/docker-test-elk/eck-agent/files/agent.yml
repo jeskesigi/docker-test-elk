@@ -13,12 +13,12 @@ agent:
     use_output: elasticsearch
 
 # https://www.elastic.co/guide/en/fleet/current/elastic-agent-input-configuration.html
+# https://www.elastic.co/guide/en/beats/filebeat/8.11/filebeat-input-filestream.html
 inputs:
   - id: docker-test-log
     type: filestream
     use_output: elasticsearch
-    paths:
-    - /var/log/containers/test-*.log
+    paths: ["/var/log/containers/test-*.log"]
 
 # https://www.elastic.co/guide/en/fleet/current/elasticsearch-output.html
 outputs:
