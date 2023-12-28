@@ -24,8 +24,6 @@ inputs:
     data_stream:
       namespace: default
     streams:
-      # Stream ID for this data stream allowing Filebeat to track the state of the ingested files. Must be unique.
-      # Each filestream data stream creates a separate instance of the Filebeat filestream input.
       - id: container-log-${kubernetes.pod.name}-${kubernetes.container.id}
         data_stream:
           dataset: kubernetes.container_logs
@@ -33,8 +31,8 @@ inputs:
         prospector.scanner.symlinks: true
         parsers:
           - container: ~
-          # - ndjson:
-          #     target: json
+          - ndjson:
+            target: json
           # - multiline:
           #     type: pattern
           #     pattern: '^\['
