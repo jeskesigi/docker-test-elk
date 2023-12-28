@@ -7,4 +7,4 @@ metadata:
     k8s-app: elastic-agent-standalone
 data:
   agent.yml: |-
-{{ tpl ($.Files.Get "files/agent.yml) $ | indent 4 }}
+{{ tpl ($.Files.Get "files/agent.yml") $ | indent 4 }}
