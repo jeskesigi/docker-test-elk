@@ -37,7 +37,7 @@ inputs:
         prospector:
           scanner:
             symlinks: true
-            exclude_files: [".*gateway.*"]
+            exclude_files: [".*gateway.*",".*proxy.*"]
 
 # https://www.elastic.co/guide/en/fleet/current/elasticsearch-output.html
 outputs:
