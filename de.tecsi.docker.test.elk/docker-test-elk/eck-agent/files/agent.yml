@@ -34,7 +34,10 @@ inputs:
             target: json
         paths:
           - /var/log/containers/test-*.log
-        prospector.scanner.symlinks: true
+        prospector:
+          scanner:
+            symlinks: true
+            exclude_files: [".*gateway.*"]
 
 # https://www.elastic.co/guide/en/fleet/current/elasticsearch-output.html
 outputs:
